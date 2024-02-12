@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "toronto-maple-leafs-logo.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

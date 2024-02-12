@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "tampa-bay-lightning-logo.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

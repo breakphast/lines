@@ -11,6 +11,11 @@
 		3EAFE2EA2B77FD13008DD174 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAFE2E92B77FD13008DD174 /* ContentView.swift */; };
 		3EAFE2EC2B77FD15008DD174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EAFE2EB2B77FD15008DD174 /* Assets.xcassets */; };
 		3EAFE2EF2B77FD15008DD174 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EAFE2EE2B77FD15008DD174 /* Preview Assets.xcassets */; };
+		3EAFE2F62B77FD68008DD174 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAFE2F52B77FD68008DD174 /* Game.swift */; };
+		3EAFE2F82B77FD89008DD174 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAFE2F72B77FD89008DD174 /* GameService.swift */; };
+		3EAFE2FA2B7808A0008DD174 /* nhlOdds.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EAFE2F92B7808A0008DD174 /* nhlOdds.json */; };
+		3EAFE2FC2B7A604B008DD174 /* BetSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAFE2FB2B7A604B008DD174 /* BetSelections.swift */; };
+		3EAFE2FE2B7A60DF008DD174 /* BetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAFE2FD2B7A60DF008DD174 /* BetButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		3EAFE2E92B77FD13008DD174 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3EAFE2EB2B77FD15008DD174 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EAFE2EE2B77FD15008DD174 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3EAFE2F52B77FD68008DD174 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		3EAFE2F72B77FD89008DD174 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		3EAFE2F92B7808A0008DD174 /* nhlOdds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = nhlOdds.json; sourceTree = "<group>"; };
+		3EAFE2FB2B7A604B008DD174 /* BetSelections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSelections.swift; sourceTree = "<group>"; };
+		3EAFE2FD2B7A60DF008DD174 /* BetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,10 @@
 			children = (
 				3EAFE2E72B77FD13008DD174 /* linesApp.swift */,
 				3EAFE2E92B77FD13008DD174 /* ContentView.swift */,
+				3EAFE2FF2B7A60F4008DD174 /* Components */,
+				3EAFE2F52B77FD68008DD174 /* Game.swift */,
+				3EAFE2F72B77FD89008DD174 /* GameService.swift */,
+				3EAFE2F92B7808A0008DD174 /* nhlOdds.json */,
 				3EAFE2EB2B77FD15008DD174 /* Assets.xcassets */,
 				3EAFE2ED2B77FD15008DD174 /* Preview Content */,
 			);
@@ -65,6 +79,15 @@
 				3EAFE2EE2B77FD15008DD174 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3EAFE2FF2B7A60F4008DD174 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3EAFE2FD2B7A60DF008DD174 /* BetButton.swift */,
+				3EAFE2FB2B7A604B008DD174 /* BetSelections.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EAFE2EF2B77FD15008DD174 /* Preview Assets.xcassets in Resources */,
+				3EAFE2FA2B7808A0008DD174 /* nhlOdds.json in Resources */,
 				3EAFE2EC2B77FD15008DD174 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +162,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EAFE2EA2B77FD13008DD174 /* ContentView.swift in Sources */,
+				3EAFE2F62B77FD68008DD174 /* Game.swift in Sources */,
+				3EAFE2FC2B7A604B008DD174 /* BetSelections.swift in Sources */,
 				3EAFE2E82B77FD13008DD174 /* linesApp.swift in Sources */,
+				3EAFE2F82B77FD89008DD174 /* GameService.swift in Sources */,
+				3EAFE2FE2B7A60DF008DD174 /* BetButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
