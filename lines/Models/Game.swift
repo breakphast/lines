@@ -83,14 +83,13 @@ class Game: Identifiable, Codable {
             }
         }
         
-        // Initializing properties with aggregated or selected data
         self.id = gameElement.id
         self.homeTeam = gameElement.homeTeam
         self.awayTeam = gameElement.awayTeam
         self.date = gameElement.commenceTime
+        
         self.completed = gameElement.completed ?? false
         self.bookmakers = gameElement.bookmakers
-        print(bookmakers.map { $0.title })
         
         self.homeMoneyLineOdds = homeMoneyLineOddsTemp.sorted { $0.odds > $1.odds }
         self.awayMoneyLineOdds = awayMoneyLineOddsTemp.sorted { $0.odds > $1.odds }
@@ -179,36 +178,7 @@ enum SportTitle: String, Codable {
     case nhl = "NHL"
 }
 
-enum AwayTeam: String, Codable {
-    case arizonaCoyotes = "Arizona Coyotes"
-    case bostonBruins = "Boston Bruins"
-    case buffaloSabres = "Buffalo Sabres"
-    case calgaryFlames = "Calgary Flames"
-    case carolinaHurricanes = "Carolina Hurricanes"
-    case coloradoAvalanche = "Colorado Avalanche"
-    case columbusBlueJackets = "Columbus Blue Jackets"
-    case dallasStars = "Dallas Stars"
-    case detroitRedWings = "Detroit Red Wings"
-    case edmontonOilers = "Edmonton Oilers"
-    case floridaPanthers = "Florida Panthers"
-    case losAngelesKings = "Los Angeles Kings"
-    case montréalCanadiens = "Montréal Canadiens"
-    case nashvillePredators = "Nashville Predators"
-    case newJerseyDevils = "New Jersey Devils"
-    case newYorkIslanders = "New York Islanders"
-    case ottawaSenators = "Ottawa Senators"
-    case over = "Over"
-    case philadelphiaFlyers = "Philadelphia Flyers"
-    case pittsburghPenguins = "Pittsburgh Penguins"
-    case seattleKraken = "Seattle Kraken"
-    case stLouisBlues = "St Louis Blues"
-    case tampaBayLightning = "Tampa Bay Lightning"
-    case torontoMapleLeafs = "Toronto Maple Leafs"
-    case under = "Under"
-    case vancouverCanucks = "Vancouver Canucks"
-    case washingtonCapitals = "Washington Capitals"
-    case winnipegJets = "Winnipeg Jets"
-}
+
 
 let nhlLogos = [
     "Anaheim Ducks": "anaheim-ducks-logo",

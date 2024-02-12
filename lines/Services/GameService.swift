@@ -12,6 +12,10 @@ import Combine
 class GameService {
     var allGames = [Game]()
     var bookiesRanked: [(title: String, odds: Int)]?
+    var activeSport: SportTitle = .nhl
+    
+    var mockData = false
+    let apiKey = "ab5225bbaeaf25a64a6bba6340bdf2e2"
     
     private var gameSubscription: AnyCancellable?
     
@@ -19,21 +23,19 @@ class GameService {
     
     init() {
         decoder.dateDecodingStrategy = .iso8601
-        getGamesLocally()
+        mockData ? getGamesLocally() : getGames()
     }
     
     private func getGames() {
-        guard let url = URL(string: "https://api.the-odds-api.com/v4/sports/icehockey_nhl/odds/?apiKey=4361370f2df59d9c4aabf5b7ff5fd438&regions=us&markets=h2h,spreads,totals&oddsFormat=american&bookmakers=fanduel,draftkings,betmgm") else {
+        guard let url = URL(string: "https://api.the-odds-api.com/v4/sports/icehockey_nhl/odds/?apiKey=\(apiKey)&regions=us&markets=h2h,spreads,totals&oddsFormat=american&bookmakers=fanduel,draftkings,betrivers,pointsbetus,unibet_us,espnbet,betmgm") else {
             return
         }
         
         gameSubscription = download(url: url)
             .decode(type: [GameElement].self, decoder: decoder)
             .sink(receiveCompletion: handleCompletion, receiveValue: { [weak self] returnedGames in
-
                 let games = returnedGames.map { Game(gameElement: $0) }
                 self?.allGames = games
-                
             })
     }
     
@@ -94,5 +96,22 @@ class GameService {
         return Just(data)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
+    }
+}
+
+extension Date {
+    func toEasternTimeString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "America/New_York")
+        dateFormatter.dateFormat = "h:mm a"
+        
+        return dateFormatter.string(from: self)
+    }
+    func headerDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "America/New_York")
+        dateFormatter.dateFormat = "MMM. d, yyyy"
+        
+        return dateFormatter.string(from: self)
     }
 }
