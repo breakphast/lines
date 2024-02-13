@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var gameService = GameService()
     @State private var sport: String? = "NBA"
-    let sports = ["NHL", "NBA", "NFL", "MLB"]
+    let sports = ["NHL", "NBA"]
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -19,13 +19,16 @@ struct ContentView: View {
                     .zIndex(100)
                 
                 ScrollView {
-                    VStack(spacing: 32) {
+                    VStack(spacing: 16) {
                         scrollContent
                     }
                 }
                 .scrollIndicators(.hidden)
                 .padding(.top, 16)
                 .padding(.horizontal)
+                .refreshable {
+                    gameService.getGamesLocally(sport: gameService.activeSport)
+                }
             }
         }
         .environment(gameService)

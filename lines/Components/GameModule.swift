@@ -50,7 +50,7 @@ struct GameModule: View {
                 // Matchup info stack
                 VStack(alignment: .center) {
                     Text(game.date.toEasternTimeString())
-                    Text("\((teamAssets[0][game.awayTeam] ?? "").components(separatedBy: " ")[0]) \(spread ?? "")")
+                    Text("\((teamAssets[0][game.spreadAdvantageTeam] ?? "").components(separatedBy: " ")[0]) \(spread ?? "")")
                         .fontWeight(.regular)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -82,7 +82,7 @@ struct GameModule: View {
             if game.id != gameService.allGames.filter({ $0.date.headerDateString() == Date().headerDateString() }).last?.id {
                 RoundedRectangle(cornerRadius: 1)
                     .frame(height: 1)
-                    .opacity(0.2)
+                    .foregroundStyle(.secondary.opacity(0.1))
             }
         }
         .lineLimit(2)

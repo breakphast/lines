@@ -35,6 +35,8 @@ class Game: Identifiable, Codable {
     var underLines: [Double]
     var underOdds: [BookOdds]
     
+    var spreadAdvantageTeam: String
+    
     init(gameElement: GameElement) {
         // Temp collections to hold data from multiple bookmakers
         var homeSpreadLinesTemp: [Double] = []
@@ -105,6 +107,12 @@ class Game: Identifiable, Codable {
 
         self.underLines = underLinesTemp
         self.underOdds = underOddsTemp.sorted { $0.odds > $1.odds }
+        
+        var team = ""
+        if let spread = homeSpreadLinesTemp.first {
+            team = spread < 0 ? gameElement.homeTeam : gameElement.awayTeam
+        }
+        self.spreadAdvantageTeam = team
     }
 }
 

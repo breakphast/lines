@@ -25,12 +25,12 @@ struct BetButton: View {
             Text(lineText)
                 .font(.system(.caption, design: .monospaced))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading)
+                .padding(.leading, total == nil ? 24 : gameService.activeSport == .nba ? 14 : 20)
                 .fontWeight(.heavy)
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
         }
-        .frame(height: 55)
+        .frame(height: 44)
         .background(
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color(book).opacity(0.7))
@@ -42,7 +42,7 @@ struct BetButton: View {
         let formattedOdds = odds > 0 ? "+\(odds)" : "\(odds)"
         if let line = line {
             if let total {
-                let formattedLine = "\(total == .over ? "O \(Int(line))" : "U \(Int(line))")"
+                let formattedLine = "\(total == .over ? "O \(line)" : "U \(line)")"
                 return "\(formattedLine)\n\(formattedOdds)"
             } else {
                 let formattedLine = line > 0 ? "+\(line)" : "\(line)"
@@ -57,7 +57,7 @@ struct BetButton: View {
         Image(book)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(height: 55)
+            .frame(height: 44)
             .clipShape(.rect(cornerRadius: 8, style: .continuous))
             .frame(maxWidth: .infinity, alignment: .trailing)
     }

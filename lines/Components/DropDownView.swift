@@ -31,7 +31,6 @@ struct DropDownView: View {
                 
                 HStack(spacing: 0) {
                     Text(selection ?? hint)
-                        .foregroundStyle(selection == nil ? .gray : .primary)
                         .lineLimit(1)
                     
                     Spacer(minLength: 0)
