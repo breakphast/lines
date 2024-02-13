@@ -11,11 +11,22 @@ struct GameModule: View {
     @Environment(GameService.self) var gameService
     let game: Game
     var spread: String? = nil
+    let sport: SportTitle
     
-    init(game: Game) {
+    var teamAssets = [[String : String]]()
+    
+    init(game: Game, sport: SportTitle) {
         self.game = game
+        self.sport = sport
+        
         if let homeLine = game.homeSpreadLines.first, let awayLine = game.awaySpreadLines.first {
             self.spread = String(homeLine < awayLine ? homeLine : awayLine)
+        }
+        switch sport {
+        case .nba:
+            teamAssets = [nbaTeams, nbaTeams2]
+        case .nhl:
+            teamAssets = [nhlTeams, nhlTeams2]
         }
     }
     
@@ -24,13 +35,13 @@ struct GameModule: View {
             HStack {
                 // Away team stack
                 HStack(spacing: 2) {
-                    Image(nhlLogos[game.awayTeam] ?? "")
+                    Image(teamAssets[0][game.awayTeam] ?? "")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 44, height: 44)
                     
                     VStack(alignment: .leading) {
-                        Text(nhlTeams2[game.awayTeam]!)
+                        Text(teamAssets[1][game.awayTeam] ?? "")
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }
@@ -39,7 +50,7 @@ struct GameModule: View {
                 // Matchup info stack
                 VStack(alignment: .center) {
                     Text(game.date.toEasternTimeString())
-                    Text("\(nhlTeams[game.awayTeam]!.components(separatedBy: " ")[0]) -1.5")
+                    Text("\((teamAssets[0][game.awayTeam] ?? "").components(separatedBy: " ")[0]) \(spread ?? "")")
                         .fontWeight(.regular)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -47,11 +58,11 @@ struct GameModule: View {
                 // Home team stack
                 HStack(spacing: 2) {
                     VStack(alignment: .leading) {
-                        Text(nhlTeams2[game.homeTeam]!)
+                        Text(teamAssets[1][game.homeTeam] ?? "")
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     
-                    Image(nhlLogos[game.homeTeam] ?? "")
+                    Image(teamAssets[0][game.homeTeam] ?? "")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 44, height: 44)
@@ -89,7 +100,7 @@ struct GameModule: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .font(.caption.bold())
-        .foregroundStyle(.penk.opacity(0.5))
+        .foregroundStyle(.secondary.opacity(0.7))
         .padding(.horizontal, 32)
     }
 }

@@ -12,9 +12,9 @@ import Combine
 class GameService {
     var allGames = [Game]()
     var bookiesRanked: [(title: String, odds: Int)]?
-    var activeSport: SportTitle = .nhl
+    var activeSport: SportTitle = .nba
     
-    var mockData = false
+    var mockData = true
     let apiKey = "ab5225bbaeaf25a64a6bba6340bdf2e2"
     
     private var gameSubscription: AnyCancellable?
@@ -23,11 +23,19 @@ class GameService {
     
     init() {
         decoder.dateDecodingStrategy = .iso8601
-        mockData ? getGamesLocally() : getGames()
+        mockData ? getGamesLocally(sport: activeSport) : getGames(sport: activeSport)
     }
     
-    private func getGames() {
-        guard let url = URL(string: "https://api.the-odds-api.com/v4/sports/icehockey_nhl/odds/?apiKey=\(apiKey)&regions=us&markets=h2h,spreads,totals&oddsFormat=american&bookmakers=fanduel,draftkings,betrivers,pointsbetus,unibet_us,espnbet,betmgm") else {
+    private func getGames(sport: SportTitle) {
+        var url: URL?
+        
+        switch sport {
+        case .nhl:
+            url = URL(string: "https://api.the-odds-api.com/v4/sports/icehockey_nhl/odds/?apiKey=\(apiKey)&regions=us&markets=h2h,spreads,totals&oddsFormat=american&bookmakers=fanduel,draftkings,betrivers,pointsbetus,unibet_us,espnbet,betmgm")
+        case .nba:
+            url = URL(string: "https://api.the-odds-api.com/v4/sports/basketball_nba/odds/?apiKey=\(apiKey)&regions=us&markets=h2h,spreads,totals&oddsFormat=american&bookmakers=fanduel,draftkings,betrivers,pointsbetus,unibet_us,espnbet,betmgm")
+        }
+        guard let url = url else {
             return
         }
         
@@ -39,16 +47,28 @@ class GameService {
             })
     }
     
-    private func getGamesLocally() {
-        gameSubscription = loadLocalNHLData()
+    func getGamesLocally(sport: SportTitle) {
+        gameSubscription = loadLocalOddsData(sport: sport)
             .decode(type: [GameElement].self, decoder: decoder)
             .sink(receiveCompletion: handleCompletion, receiveValue: { [weak self] returnedGames in
                 guard let self = self else { return }
-                
                 let games = returnedGames.map { Game(gameElement: $0) }
                 self.allGames = games
             })
     }    
+    
+    func loadLocalOddsData(sport: SportTitle) -> AnyPublisher<Data, Error> {
+        let fileName = sport == .nba ? "nbaOdds" : "nhlOdds"
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
+              let data = try? Data(contentsOf: url) else {
+            return Fail(error: NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to locate json file"]))
+                .eraseToAnyPublisher()
+        }
+        
+        return Just(data)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+    }
     
     func download(url: URL) -> AnyPublisher<Data, any Error> {
         return URLSession.shared.dataTaskPublisher(for: url)
@@ -84,18 +104,6 @@ class GameService {
             case .unknown: "[🤷🏽‍♂️] Unknown error occured"
             }
         }
-    }
-    
-    private func loadLocalNHLData() -> AnyPublisher<Data, Error> {
-        guard let url = Bundle.main.url(forResource: "nhlOdds", withExtension: "json"),
-              let data = try? Data(contentsOf: url) else {
-            return Fail(error: NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to locate nflOddsData.json"]))
-                .eraseToAnyPublisher()
-        }
-        
-        return Just(data)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
     }
 }
 

@@ -17,33 +17,32 @@ struct BetButton: View {
     
     @State var odds: Int
     @State var line: Double? = nil
-    @State var image: Image
+    @State var book: String
     @State var total: TotalType? = nil
     
     var body: some View {
-        ZStack {
+        HStack {
             Text(lineText)
-                .font(.system(.body, design: .monospaced))
+                .font(.system(.caption, design: .monospaced))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
-                .overlay {
-                    imageOverlay
-                }
                 .fontWeight(.heavy)
-                .frame(height: 55)
                 .foregroundStyle(.white)
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(.penk.opacity(0.7))
-                )
+                .multilineTextAlignment(.center)
         }
+        .frame(height: 55)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color(book).opacity(0.7))
+        )
+        .overlay { imageOverlay }
     }
     
     private var lineText: String {
         let formattedOdds = odds > 0 ? "+\(odds)" : "\(odds)"
         if let line = line {
             if let total {
-                let formattedLine = "\(total == .over ? "O\(line)" : "U\(line)")"
+                let formattedLine = "\(total == .over ? "O \(Int(line))" : "U \(Int(line))")"
                 return "\(formattedLine)\n\(formattedOdds)"
             } else {
                 let formattedLine = line > 0 ? "+\(line)" : "\(line)"
@@ -55,7 +54,7 @@ struct BetButton: View {
     }
     
     private var imageOverlay: some View {
-        image
+        Image(book)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(height: 55)
@@ -66,21 +65,17 @@ struct BetButton: View {
 
 extension BetButton {
     func setBookLogo(_ bookTitle: String) {
-        image = Image(bookTitle)
+        book = bookTitle
     }
 }
 
 #Preview {
     VStack {
         HStack {
-            BetButton(odds: 100, image: Image(.betRivers))
-            BetButton(odds: 100, image: Image(.betRivers))
-            BetButton(odds: 100, image: Image(.betRivers))
+            BetButton(odds: 100, book: "FanDuel")
         }
         HStack {
-            BetButton(odds: -100, image: Image(.betRivers))
-            BetButton(odds: 100, image: Image(.betRivers))
-            BetButton(odds: 100, image: Image(.betRivers))
+            BetButton(odds: 100, book: "FanDuel")
         }
     }
     .environment(GameService())

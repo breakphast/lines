@@ -9,20 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var gameService = GameService()
+    @State private var sport: String? = "NBA"
+    let sports = ["NHL", "NBA", "NFL", "MLB"]
     
     var body: some View {
-        VStack(alignment: .leading) {
-            pickersHeader
-            
-            ScrollView {
-                VStack(spacing: 32) {
-                    scrollContent
+        ZStack(alignment: .top) {
+            VStack(alignment: .leading) {
+                pickersHeader
+                    .zIndex(100)
+                
+                ScrollView {
+                    VStack(spacing: 32) {
+                        scrollContent
+                    }
                 }
+                .scrollIndicators(.hidden)
+                .padding(.top, 16)
+                .padding(.horizontal)
             }
-            .scrollIndicators(.hidden)
-            .padding(.top, 16)
-            .padding(.horizontal)
         }
+        .environment(gameService)
     }
     private var pickersHeader: some View {
         HStack {
@@ -31,23 +37,16 @@ struct ContentView: View {
             
             Spacer()
             
-            Button {
-                
-            } label: {
-                Text(gameService.activeSport.rawValue)
-                    .font(.title2.bold())
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.penk.opacity(0.7))
+            DropDownView(hint: gameService.activeSport.rawValue, options: sports, selection: $sport)
         }
         .padding(.horizontal, 24)
+        .padding(.vertical, 8)
     }
     
     private var scrollContent: some View {
         ForEach(gameService.allGames, id: \.id) { game in
             if game.date.headerDateString() == Date().headerDateString() {
-                GameModule(game: game)
-                    .environment(gameService)
+                GameModule(game: game, sport: gameService.activeSport)
             }
         }
     }

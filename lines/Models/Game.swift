@@ -172,10 +172,12 @@ struct Outcome: Codable {
 
 enum SportKey: String, Codable {
     case icehockeyNhl = "icehockey_nhl"
+    case basketball_nba = "basketball_nba"
 }
 
 enum SportTitle: String, Codable {
     case nhl = "NHL"
+    case nba = "NBA"
 }
 
 
@@ -283,4 +285,70 @@ let nhlTeams2 = [
     "Vegas Golden Knights": "VGK\nGolden Knights",
     "Washington Capitals": "WAS\nCapitals",
     "Winnipeg Jets": "WPG\nJets"
+]
+
+let nbaTeams = [
+    "Atlanta Hawks": "ATL Hawks",
+    "Boston Celtics": "BOS Celtics",
+    "Brooklyn Nets": "BKN Nets",
+    "Charlotte Hornets": "CHA Hornets",
+    "Chicago Bulls": "CHI Bulls",
+    "Cleveland Cavaliers": "CLE Cavaliers",
+    "Dallas Mavericks": "DAL Mavericks",
+    "Denver Nuggets": "DEN Nuggets",
+    "Detroit Pistons": "DET Pistons",
+    "Golden State Warriors": "GSW Warriors",
+    "Houston Rockets": "HOU Rockets",
+    "Indiana Pacers": "IND Pacers",
+    "LA Clippers": "LAC Clippers",
+    "Los Angeles Lakers": "LAL Lakers",
+    "Memphis Grizzlies": "MEM Grizzlies",
+    "Miami Heat": "MIA Heat",
+    "Milwaukee Bucks": "MIL Bucks",
+    "Minnesota Timberwolves": "MIN Timberwolves",
+    "New Orleans Pelicans": "NOP Pelicans",
+    "New York Knicks": "NY Knicks",
+    "Oklahoma City Thunder": "OKC Thunder",
+    "Orlando Magic": "ORL Magic",
+    "Philadelphia 76ers": "PHI 76ers",
+    "Phoenix Suns": "PHX Suns",
+    "Portland Trail Blazers": "POR Trail Blazers",
+    "Sacramento Kings": "SAC Kings",
+    "San Antonio Spurs": "SAS Spurs",
+    "Toronto Raptors": "TOR Raptors",
+    "Utah Jazz": "UTA Jazz",
+    "Washington Wizards": "WAS Wizards"
+]
+
+let nbaTeams2 = [
+    "Atlanta Hawks": "ATL\nHawks",
+    "Boston Celtics": "BOS\nCeltics",
+    "Brooklyn Nets": "BKN\nNets",
+    "Charlotte Hornets": "CHA\nHornets",
+    "Chicago Bulls": "CHI\nBulls",
+    "Cleveland Cavaliers": "CLE\nCavaliers",
+    "Dallas Mavericks": "DAL\nMavericks",
+    "Denver Nuggets": "DEN\nNuggets",
+    "Detroit Pistons": "DET\nPistons",
+    "Golden State Warriors": "GSW\nWarriors",
+    "Houston Rockets": "HOU\nRockets",
+    "Indiana Pacers": "IND\nPacers",
+    "LA Clippers": "LAC\nClippers",
+    "Los Angeles Lakers": "LAL\nLakers",
+    "Memphis Grizzlies": "MEM\nGrizzlies",
+    "Miami Heat": "MIA\nHeat",
+    "Milwaukee Bucks": "MIL\nBucks",
+    "Minnesota Timberwolves": "MIN\nTimberwolves",
+    "New Orleans Pelicans": "NOP\nPelicans",
+    "New York Knicks": "NY\nKnicks",
+    "Oklahoma City Thunder": "OKC\nThunder",
+    "Orlando Magic": "ORL\nMagic",
+    "Philadelphia 76ers": "PHI\n76ers",
+    "Phoenix Suns": "PHX\nSuns",
+    "Portland Trail Blazers": "POR\nTrail Blazers",
+    "Sacramento Kings": "SAC\nKings",
+    "San Antonio Spurs": "SAS\nSpurs",
+    "Toronto Raptors": "TOR\nRaptors",
+    "Utah Jazz": "UTA\nJazz",
+    "Washington Wizards": "WAS\nWizards"
 ]

@@ -17,6 +17,8 @@
 		3EAFE2FA2B7808A0008DD174 /* nhlOdds.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EAFE2F92B7808A0008DD174 /* nhlOdds.json */; };
 		3EAFE2FC2B7A604B008DD174 /* BetSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAFE2FB2B7A604B008DD174 /* BetSelections.swift */; };
 		3EAFE2FE2B7A60DF008DD174 /* BetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAFE2FD2B7A60DF008DD174 /* BetButton.swift */; };
+		3ECFE5F92B7BBF2C0033FCC7 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFE5F82B7BBF2C0033FCC7 /* DropDownView.swift */; };
+		3ECFE5FB2B7BC2BA0033FCC7 /* nbaOdds.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ECFE5FA2B7BC2BA0033FCC7 /* nbaOdds.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		3EAFE2F92B7808A0008DD174 /* nhlOdds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = nhlOdds.json; sourceTree = "<group>"; };
 		3EAFE2FB2B7A604B008DD174 /* BetSelections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetSelections.swift; sourceTree = "<group>"; };
 		3EAFE2FD2B7A60DF008DD174 /* BetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetButton.swift; sourceTree = "<group>"; };
+		3ECFE5F82B7BBF2C0033FCC7 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		3ECFE5FA2B7BC2BA0033FCC7 /* nbaOdds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = nbaOdds.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				3EAFE2F72B77FD89008DD174 /* GameService.swift */,
+				3ECFE5FA2B7BC2BA0033FCC7 /* nbaOdds.json */,
+				3EAFE2F92B7808A0008DD174 /* nhlOdds.json */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -84,7 +90,6 @@
 				3EAFE2FF2B7A60F4008DD174 /* Components */,
 				3E7A637A2B7ADADF007A2770 /* Models */,
 				3E7A637B2B7ADAE4007A2770 /* Services */,
-				3EAFE2F92B7808A0008DD174 /* nhlOdds.json */,
 				3EAFE2EB2B77FD15008DD174 /* Assets.xcassets */,
 				3EAFE2ED2B77FD15008DD174 /* Preview Content */,
 			);
@@ -105,6 +110,7 @@
 				3EAFE2FD2B7A60DF008DD174 /* BetButton.swift */,
 				3EAFE2FB2B7A604B008DD174 /* BetSelections.swift */,
 				3E7A63782B7A95A3007A2770 /* GameModule.swift */,
+				3ECFE5F82B7BBF2C0033FCC7 /* DropDownView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -170,6 +176,7 @@
 				3EAFE2EF2B77FD15008DD174 /* Preview Assets.xcassets in Resources */,
 				3EAFE2FA2B7808A0008DD174 /* nhlOdds.json in Resources */,
 				3EAFE2EC2B77FD15008DD174 /* Assets.xcassets in Resources */,
+				3ECFE5FB2B7BC2BA0033FCC7 /* nbaOdds.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +192,7 @@
 				3EAFE2F62B77FD68008DD174 /* Game.swift in Sources */,
 				3EAFE2FC2B7A604B008DD174 /* BetSelections.swift in Sources */,
 				3EAFE2E82B77FD13008DD174 /* linesApp.swift in Sources */,
+				3ECFE5F92B7BBF2C0033FCC7 /* DropDownView.swift in Sources */,
 				3EAFE2F82B77FD89008DD174 /* GameService.swift in Sources */,
 				3EAFE2FE2B7A60DF008DD174 /* BetButton.swift in Sources */,
 			);
