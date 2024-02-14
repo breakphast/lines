@@ -65,7 +65,7 @@ struct DropDownView: View {
             .background((scheme == .dark ? Color.black : Color.white).shadow(.drop(color: .primary.opacity(0.15), radius: 4)), in: .rect(cornerRadius: cornerRadius))
             .frame(height: size.height, alignment: anchor == .top ? .bottom : .top)
         }
-        .frame(width: maxWidth, height: 50)
+        .frame(width: maxWidth, height: 44)
         .zIndex(zIndex)
     }
     
