@@ -15,7 +15,7 @@ class GameService {
     var activeSport: SportTitle = .nba
     
     var mockData = true
-    let apiKey = "ab5225bbaeaf25a64a6bba6340bdf2e2"
+    var apiKey: String? = nil
     
     private var gameSubscription: AnyCancellable?
     
@@ -23,10 +23,16 @@ class GameService {
     
     init() {
         decoder.dateDecodingStrategy = .iso8601
+        if let key = Setup.apiKey {
+            self.apiKey = key
+            mockData = false
+        }
         mockData ? getGamesLocally(sport: activeSport) : getGames(sport: activeSport)
     }
     
     private func getGames(sport: SportTitle) {
+        guard let apiKey else { return }
+        
         var url: URL?
         
         switch sport {
