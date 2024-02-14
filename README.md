@@ -10,7 +10,7 @@ By default, the app operates with mock data, allowing you to explore its feature
 - 🏀 **TheOddsAPI**: For fetching live sports betting odds.
 
 ## Screenshots
+<i>Not working on GitHub mobile app at the moment
 <p float="left">
-  <img src="https://github.com/breakphast/lines/assets/59259755/dbbaa0e4-5983-4de1-a584-a4a634bbaa59" width="250" alt="Lines App Screenshot 1"/>
   <img src="https://github.com/breakphast/lines/assets/59259755/b9e9bf49-182b-4b3f-96df-19e23b9a9680" width="250" alt="Lines App Screenshot 2"/>
 </p>
