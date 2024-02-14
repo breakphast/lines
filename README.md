@@ -6,8 +6,8 @@ By default, the app operates with mock data, allowing you to explore its feature
 
 ## Technologies Used
 - 📱 **SwiftUI**: UI, animation, and custom views
-- 🚰 **Combine**: Managing asynchronous events by declaring publishers and subscribers.
-- 🏀 **TheOddsAPI**: REST API for fetching live sports betting odds.
+- 🚰 **Combine**: Managing asynchronous events by declaring publishers and subscribers
+- 🏀 **TheOddsAPI**: REST API for fetching live sports betting odds
 
 ## Screenshots
 <p float="left">
