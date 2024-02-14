@@ -20,6 +20,7 @@
 		3ECFE5F92B7BBF2C0033FCC7 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFE5F82B7BBF2C0033FCC7 /* DropDownView.swift */; };
 		3ECFE5FB2B7BC2BA0033FCC7 /* nbaOdds.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ECFE5FA2B7BC2BA0033FCC7 /* nbaOdds.json */; };
 		3ECFE5FD2B7BEDF90033FCC7 /* CustomSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFE5FC2B7BEDF90033FCC7 /* CustomSetup.swift */; };
+		3ECFE6052B7D12510033FCC7 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFE6042B7D12510033FCC7 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		3ECFE5F82B7BBF2C0033FCC7 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		3ECFE5FA2B7BC2BA0033FCC7 /* nbaOdds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = nbaOdds.json; sourceTree = "<group>"; };
 		3ECFE5FC2B7BEDF90033FCC7 /* CustomSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSetup.swift; sourceTree = "<group>"; };
+		3ECFE6042B7D12510033FCC7 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				3EAFE2F72B77FD89008DD174 /* GameService.swift */,
-				3ECFE5FA2B7BC2BA0033FCC7 /* nbaOdds.json */,
-				3EAFE2F92B7808A0008DD174 /* nhlOdds.json */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -71,7 +71,6 @@
 		3EAFE2DB2B77FD13008DD174 = {
 			isa = PBXGroup;
 			children = (
-				3ECFE5FC2B7BEDF90033FCC7 /* CustomSetup.swift */,
 				3EAFE2E62B77FD13008DD174 /* lines */,
 				3EAFE2E52B77FD13008DD174 /* Products */,
 			);
@@ -88,10 +87,12 @@
 		3EAFE2E62B77FD13008DD174 /* lines */ = {
 			isa = PBXGroup;
 			children = (
+				3ECFE5FC2B7BEDF90033FCC7 /* CustomSetup.swift */,
 				3EAFE2E72B77FD13008DD174 /* linesApp.swift */,
-				3EAFE2E92B77FD13008DD174 /* ContentView.swift */,
+				3ECFE6022B7D12310033FCC7 /* Views */,
 				3EAFE2FF2B7A60F4008DD174 /* Components */,
 				3E7A637A2B7ADADF007A2770 /* Models */,
+				3ECFE6032B7D123E0033FCC7 /* Helpers */,
 				3E7A637B2B7ADAE4007A2770 /* Services */,
 				3EAFE2EB2B77FD15008DD174 /* Assets.xcassets */,
 				3EAFE2ED2B77FD15008DD174 /* Preview Content */,
@@ -116,6 +117,24 @@
 				3ECFE5F82B7BBF2C0033FCC7 /* DropDownView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3ECFE6022B7D12310033FCC7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EAFE2E92B77FD13008DD174 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3ECFE6032B7D123E0033FCC7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3ECFE6042B7D12510033FCC7 /* Helpers.swift */,
+				3ECFE5FA2B7BC2BA0033FCC7 /* nbaOdds.json */,
+				3EAFE2F92B7808A0008DD174 /* nhlOdds.json */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +212,7 @@
 				3E7A63792B7A95A3007A2770 /* GameModule.swift in Sources */,
 				3EAFE2EA2B77FD13008DD174 /* ContentView.swift in Sources */,
 				3EAFE2F62B77FD68008DD174 /* Game.swift in Sources */,
+				3ECFE6052B7D12510033FCC7 /* Helpers.swift in Sources */,
 				3EAFE2FC2B7A604B008DD174 /* BetSelections.swift in Sources */,
 				3EAFE2E82B77FD13008DD174 /* linesApp.swift in Sources */,
 				3ECFE5F92B7BBF2C0033FCC7 /* DropDownView.swift in Sources */,

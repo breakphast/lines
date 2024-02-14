@@ -34,6 +34,7 @@ struct BetButton: View {
         .background(
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color(book).opacity(0.7))
+                .shadow(color: Color(book).opacity(0.3), radius: 2, x: 1, y: 1)
         )
         .overlay { imageOverlay }
     }
@@ -60,6 +61,7 @@ struct BetButton: View {
             .frame(height: 44)
             .clipShape(.rect(cornerRadius: 8, style: .continuous))
             .frame(maxWidth: .infinity, alignment: .trailing)
+            .shadow(color: Color(book).opacity(0.8), radius: 2, x: -2, y: 0)
     }
 }
 

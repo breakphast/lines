@@ -13,38 +13,27 @@ class GameService {
     var allGames = [Game]()
     var bookiesRanked: [(title: String, odds: Int)]?
     var activeSport: SportTitle = .nba
-    
-    var mockData = true
-    var apiKey: String? = nil
+    var apiKey: String?
     
     private var gameSubscription: AnyCancellable?
     
-    var decoder = JSONDecoder()
+    private let decoder = JSONDecoder()
     
     init() {
         decoder.dateDecodingStrategy = .iso8601
         if let key = Setup.apiKey {
             self.apiKey = key
-            mockData = false
+            getGames(sport: activeSport == .nba ? .basketball_nba : .icehockeyNhl)
+        } else {
+            getGamesLocally(sport: activeSport)
         }
-        mockData ? getGamesLocally(sport: activeSport) : getGames(sport: activeSport)
     }
     
-    private func getGames(sport: SportTitle) {
+    private func getGames(sport: SportKey) {
         guard let apiKey else { return }
         
-        var url: URL?
-        
-        switch sport {
-        case .nhl:
-            url = URL(string: "https://api.the-odds-api.com/v4/sports/icehockey_nhl/odds/?apiKey=\(apiKey)&regions=us&markets=h2h,spreads,totals&oddsFormat=american&bookmakers=fanduel,draftkings,betrivers,pointsbetus,unibet_us,espnbet,betmgm")
-        case .nba:
-            url = URL(string: "https://api.the-odds-api.com/v4/sports/basketball_nba/odds/?apiKey=\(apiKey)&regions=us&markets=h2h,spreads,totals&oddsFormat=american&bookmakers=fanduel,draftkings,betrivers,pointsbetus,unibet_us,espnbet,betmgm")
-        }
-        guard let url = url else {
-            return
-        }
-        
+        let url = Helpers.sportURL(sportKey: sport, apiKey: apiKey)
+                
         gameSubscription = download(url: url)
             .decode(type: [GameElement].self, decoder: decoder)
             .sink(receiveCompletion: handleCompletion, receiveValue: { [weak self] returnedGames in
@@ -61,7 +50,7 @@ class GameService {
                 let games = returnedGames.map { Game(gameElement: $0) }
                 self.allGames = games
             })
-    }    
+    }
     
     func loadLocalOddsData(sport: SportTitle) -> AnyPublisher<Data, Error> {
         let fileName = sport == .nba ? "nbaOdds" : "nhlOdds"

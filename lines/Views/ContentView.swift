@@ -48,7 +48,11 @@ struct ContentView: View {
     
     private var scrollContent: some View {
         ForEach(gameService.allGames, id: \.id) { game in
-            if game.date.headerDateString() == Date().headerDateString() {
+            if let _ = gameService.apiKey {
+                if game.date.headerDateString() == Date().headerDateString() {
+                    GameModule(game: game, sport: gameService.activeSport)
+                }
+            } else {
                 GameModule(game: game, sport: gameService.activeSport)
             }
         }
